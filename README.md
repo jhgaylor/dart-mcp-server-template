@@ -12,27 +12,20 @@ This template includes:
 
 ## Using This Template
 
-### Option 1: Using copy_template
-
-The recommended way to use this template is with the [copy_template](https://pub.dev/packages/copy_template) package:
-
-```bash
-# Install copy_template if you haven't already
-dart pub global activate copy_template
-
-# Create a new project from this template
-copy_template my_new_mcp_server https://github.com/jhgaylor/dart-mcp-server-template /path/to/destination
-```
-
-### Option 2: Manual Clone
-
-You can also clone this repository and manually update the package name:
+Clone this repository and manually update the package name:
 
 ```bash
 git clone https://github.com/jhgaylor/dart-mcp-server-template.git my_new_mcp_server
 cd my_new_mcp_server
+
+# Update the package name throughout the codebase
+find . -type f -name "*.dart" -o -name "pubspec.yaml" | xargs sed -i 's/dart_mcp_server_template/my_new_mcp_server/g'
+# Update the package name in the repository URL
+find . -type f -name "*.md" -o -name "Dockerfile" | xargs sed -i 's/dart-mcp-server-template/my-new-mcp-server/g'
+
 # Remove the .git directory to start fresh
 rm -rf .git
+
 # Initialize a new git repository
 git init
 ```

@@ -1,10 +1,12 @@
 import 'package:mcp_dart/mcp_dart.dart';
+import 'package:dart_mcp_server_template/src/config.dart';
 
 /// Creates and configures the MCP server with all resources
 Future<McpServer> createMcpServer() async {
+  final config = Config();
 
   final mcpServer = McpServer(
-    Implementation(name: "dart-mcp-server-template", version: "1.0.0"),
+    Implementation(name: config.serverName, version: config.serverVersion),
     options: ServerOptions(capabilities: ServerCapabilities()),
   );
 
