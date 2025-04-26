@@ -22,6 +22,8 @@ cd my_new_mcp_server
 find . -type f -name "*.dart" -o -name "pubspec.yaml" | xargs sed -i 's/dart_mcp_server_template/my_new_mcp_server/g'
 # Update the package name in the repository URL
 find . -type f -name "*.md" -o -name "Dockerfile" | xargs sed -i 's/dart-mcp-server-template/my-new-mcp-server/g'
+# Rename the files
+find . -type f -name "*dart_mcp_server_template*" | while read file; do mv "$file" "${file//dart_mcp_server_template/my_new_mcp_server}"; done
 
 # Remove the .git directory to start fresh
 rm -rf .git
