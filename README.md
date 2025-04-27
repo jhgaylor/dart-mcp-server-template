@@ -21,18 +21,6 @@ This template includes:
 
 - **lib/src/server.dart** - Sets up a basic MCP server. This is where the bulk of your custom code will go.
 
-### In-Process Transport
-The Dart SDK has built-in support for an in-process transport, allowing you to use the MCP server directly within a Dart application without a network layer:
-
-```dart
-import 'src/server.dart';
-
-void main() async {
-  final server = await createMcpServer();
-  // Use the `server` instance directly in your Dart code...
-}
-```
-
 ### In-Memory Stream Transport
 You can connect a Dart client and server entirely in memory using the `IOStreamTransport`. [Here](https://github.com/leehack/mcp_dart/blob/main/example/iostream-client-server/simple.dart) is an end-to-end example.
 
