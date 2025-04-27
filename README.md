@@ -10,6 +10,32 @@ This template includes:
 - Basic project structure with lib, bin, and test directories
 - Integration with the mcp_dart package
 
+## Project Structure and Features
+
+### Server Implementation
+- **bin/** - Contains executable Dart files to start the server via different transport methods:
+  - `dart bin/stdio_server.dart`: Start server with standard I/O transport.
+  - `dart bin/sse_server.dart`: Start server with Server-Sent Events transport.
+  - `dart bin/streamable_http_server.dart`: Start server with HTTP streaming transport.
+  - All these executables use the core server implementation defined in `lib/src/server.dart`.
+
+- **lib/src/server.dart** - Sets up a basic MCP server. This is where the bulk of your custom code will go.
+
+### In-Process Transport
+The Dart SDK has built-in support for an in-process transport, allowing you to use the MCP server directly within a Dart application without a network layer:
+
+```dart
+import 'src/server.dart';
+
+void main() async {
+  final server = await createMcpServer();
+  // Use the `server` instance directly in your Dart code...
+}
+```
+
+### In-Memory Stream Transport
+You can connect a Dart client and server entirely in memory using the `IOStreamTransport`. [Here](https://github.com/leehack/mcp_dart/blob/main/example/iostream-client-server/simple.dart) is an end-to-end example.
+
 ## Using This Template
 
 Clone this repository and manually update the package name:
@@ -38,10 +64,13 @@ Then update the package name in pubspec.yaml and throughout the codebase.
 
 After creating your project from this template:
 
-1. Update the pubspec.yaml with your project details
-2. Modify the configuration in lib/src/config.dart as needed
+1. Update the `pubspec.yaml` with your project details
+2. Modify the configuration in `lib/src/config.dart` as needed
 3. Implement your custom server logic
-4. Run the server with `dart bin/streamable_http_server.dart`
+4. Run the server using one of the provided entrypoints:
+   - `dart bin/stdio_server.dart` (Standard I/O)
+   - `dart bin/sse_server.dart` (Server-Sent Events)
+   - `dart bin/streamable_http_server.dart` (HTTP streaming)
 
 ## Docker Deployment
 
