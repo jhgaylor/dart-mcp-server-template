@@ -74,4 +74,5 @@ docker run -p 3000:3000 my-mcp-server
 
 ## License
 
-[Add your license information here]
+This template is released under the MIT License. When you generate your own application from this template, you are free to choose any license for your project; the template does not impose a specific license on your generated code.
+
